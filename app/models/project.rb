@@ -13,6 +13,7 @@ class Project < ApplicationRecord
   API_FIELDS = [:name, :platform, :description, :language, :homepage,
                 :repository_url, :normalized_licenses, :rank, :status,
                 :latest_release_number, :latest_release_published_at,
+                :latest_stable_release_number, :latest_stable_release_published_at,
                 :dependents_count, :dependent_repos_count, :latest_download_url]
 
   validates_presence_of :name, :platform
@@ -169,6 +170,7 @@ class Project < ApplicationRecord
     normalize_licenses
     set_latest_release_published_at
     set_latest_release_number
+    set_latest_stable_release_info
     set_runtime_dependencies_count
     set_language
   end
